@@ -9,7 +9,7 @@ const windowoneheader = document.getElementById('windowoneheader');
 const notepadheader = document.getElementById('notepadheader');
 const notif_MINI = document.getElementById(`MINInotif`);
 const notif_MINI_ntpd = document.getElementById(`MINInotif_ntpd`)
-var opening = new Audio('/emporium/audio/opening.mp3');
+var opening = new Audio('audio/opening.mp3');
 
 function powerBTN(){
     start_button.classList.add('die');
