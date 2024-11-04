@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>the highway</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="/emporium/images/icon.png" type="gif" sizes="16x16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rochester&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div id="entire_box">
+        <div class="base" id="base"></div>
+        <!-- on screen stuff -->
+        <div class="screen" id="screen">
+            <div class="text" id="windowstuff">INFORMATION HIGHWAY</div>
+            <div class="text" id="exit" onclick="exit_screen()" style="text-align:right; width:min-content">EXIT</div>
+            <div class="bootingtext" id="booting">booting(. . .)</div>
+            <!-- ADD AUDIO!!!!!!!!!!!! -->
+            <!-- web icons & text -->
+            <div id="under_webic" onclick="webwindow()">
+                <!-- web icon & all that -->
+                <div class="web_img"><img draggable="false" src="/emporium/images/earthween.png"></div>
+                <div><img id="MINInotif" draggable="false" src="/emporium/images/YO!.png"></div>
+                <div class="text icon_text">web</div>
+            </div>
+            <!-- credits & all that -->
+            <div id="under_notesic" onclick="noteswindow()">
+                <div class="web_img"><img draggable="false" src="/emporium/images/credits.png"></div>
+                <div><img id="MINInotif_ntpd" draggable="false" src="/emporium/images/YO!.png"></div>
+                <div class="text icon_text">notes</div>
+            </div>
+            <!-- web window -->
+            <div class="window1">
+                <header id="windowoneheader">
+                    <div style="display: flex; margin: 10px; font-style: italic; font-weight:bold; font-size: 30px; font-family: Rochester; color: white;">hyper-highway</div>
+                    <div class="actions" onmousedown="event.stopImmediatePropagation(); event.stopPropagation(); event.preventDefault()">
+                        <img draggable="false" title='minimize' onclick="toggleMINIMIZEweb()" src="/emporium/images/MINI.png">
+                        <img draggable="false" title='resize' onclick="toggleRESIZEweb()" src="/emporium/images/RESIZE.png">
+                        <img draggable="false" title='discard window' onclick="toggleDISCARDweb()" src="/emporium/images/NO.png">
+                    </div>
+                </header>
+                <div class="content" style="padding: 10px; font-size:x-large"> your internet may be out, please check your router! (not out yet, full release will have the web)</div>
+            </div>
+            <!-- web window -->
+            <!-- notes window -->
+            <div class="notepadwindow">
+                <header id="notepadheader"><span style="display: flex; margin: 10px; font-style: italic; font-weight:bold;">notepad</span>
+                    <div></div>
+                    <div class="actions" onmousedown="event.stopImmediatePropagation(); event.stopPropagation(); event.preventDefault()">
+                        <img draggable="false" title='minimize' onclick="toggleMINIMIZE_ntpd()" src="/emporium/images/MINI.png">
+                        <img draggable="false" title='resize' onclick="toggleRESIZE_ntpd()" src="/emporium/images/RESIZE.png">
+                        <img draggable="false" title='discard window' onclick="toggleDISCARD_ntpd()" src="/emporium/images/NO.png">
+                    </div>
+                </header>
+                <div class="ntpd_textchanges">
+                    <button title="bold" id="ntpd_bold" onclick="bold_ntpd()"><img draggable=false src="main site images/bold.png"></button>
+                    <button title="italic" id="ntpd_italic" onclick="italic_ntpd()"><img draggable=false src="main site images/italic.png"></button>
+                    <button title="underline" id="ntpd_underline" onclick="underline_ntpd()"><img draggable=false src="main site images/underline.png"></button>
+                    <button title="ordered list" id="ntpd_orderedlist" onclick="orderedlist_ntpd()"><img draggable=false src="main site images/orderedlist.png"></button>
+                    <button title="unordered list" id="ntpd_unorderedlist" onclick="UNorderedlist_ntpd()"><img draggable=false src="main site images/unorderedlist.png"></button>
+                    <button title="save" id="ntpd_save" onclick="save_ntpd()"><img draggable=false src="main site images/save.png"></button>
+                    <button title="destroy all. (i) for more info" id="ntpd_restart" onclick="restart_ntpd()"><img draggable=false src="main site images/delete.png"></button>
+                    <div class="notesfornotepad"><img draggable=false src="main site images/infografic.png" onclick="info_ntpd()"></div>
+                    <div id="infografic_ntpd">pressing the bin removes ALL current text & deletes all saved data! to go back to a save, refresh this window! shortcut for stylizing still work, just no shortcuts for saving & destroying. press directly in the middle of a button if it doesn't work.</div>
+                </div>
+                <div contenteditable="true" id="notepadwriting"></div>
+                <div id="storagenotifs_ntpd">...</div>
+                <div id="scrollingnotifs_ntpd"><div style="height: 35px; width: 35px; background: black"></div><div id="scrollarrow">↓</div>
+            </div>
+            </div>
+            <!-- notes window -->
+        </div>
+        <!-- screen border -->
+        <div class="left_vertical_border verti_border"></div>
+        <div class="top_horizontal_border horiz_border"></div>
+        <div class="right_vertical_border verti_border"></div>
+        <div class="bottom_horizontal_border horiz_border"></div>
+        <div class="top_left_corner corner"></div>
+        <div class="top_right_corner corner"></div>
+        <div class="bottom_left_corner corner"></div>
+        <div class="bottom_right_corner corner"></div>
+        </div>
+    </div>
+    <!-- power button start -->
+    <div class="falling_start" id="powerbutton" style="height: 90vh;">
+        <button id="power_start" style="height:100px; width:100px;" onclick="powerBTN()"><img src="/emporium/images/power-button.png" id="pbimg"></button>
+        <div id="goaway" style="color:antiquewhite; font-size: small;">press to start</div>
+    </div>
+<script src="window.js" defer></script>
+</body>
+</html>
