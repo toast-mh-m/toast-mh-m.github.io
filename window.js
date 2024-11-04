@@ -1,6 +1,3 @@
-import 'https://tomashubelbauer.github.io/github-pages-local-storage/index.js';
-// Use `localStorage` as you normally would now
-
 const start_button = document.getElementById('power_start');
 const text_under_button = document.getElementById('goaway');
 const main_window = document.getElementById('entire_box');
