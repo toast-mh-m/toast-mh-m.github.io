@@ -336,7 +336,7 @@ function restart_ntpd(){
         }, 5000)
     }, delay += 1250)
 }
-isinfobubble_ntpd = true;
+let isinfobubble_ntpd = true;
 function info_ntpd(){
     let infobubble = document.getElementById('infografic_ntpd');
     if(isinfobubble_ntpd){
