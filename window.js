@@ -15,6 +15,7 @@ var opening = new Audio('audio/opening.mp3');
 console.log("Script loaded");
 
 function powerBTN(){
+    console.log("Power button clicked!");
     start_button.classList.add('die');
     text_under_button.classList.add('die2');
     main_window.style.display = "flex";
