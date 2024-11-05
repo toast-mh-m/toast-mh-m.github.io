@@ -113,7 +113,7 @@ html, body{
     top:50%;
     right:50%;
 }
-#power_start{
+#powerBTN{
     background-color: rgb(18, 16, 16);
     border:1px solid grey;
     border-radius: 50%;
