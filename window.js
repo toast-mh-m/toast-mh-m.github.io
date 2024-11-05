@@ -9,7 +9,6 @@ const windowoneheader = document.getElementById('windowoneheader');
 const notepadheader = document.getElementById('notepadheader');
 const notif_MINI = document.getElementById(`MINInotif`);
 const notif_MINI_ntpd = document.getElementById(`MINInotif_ntpd`);
-const start_button = document.getElementById('powerBTN');
 var opening = new Audio('audio/opening.mp3');
 
 console.log("Script loaded");
