@@ -11,6 +11,8 @@ const notif_MINI = document.getElementById(`MINInotif`);
 const notif_MINI_ntpd = document.getElementById(`MINInotif_ntpd`)
 var opening = new Audio('audio/opening.mp3');
 
+console.log("Script loaded");
+
 function powerBTN(){
     start_button.classList.add('die');
     text_under_button.classList.add('die2');
