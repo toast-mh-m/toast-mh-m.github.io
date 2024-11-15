@@ -18,7 +18,7 @@ function exit_screen() {
 };
 powerBTN.addEventListener("click", function() {
     console.log("Power button clicked!");
-    start_button.classList.add('die');
+    powerBTN.classList.add('die');
     text_under_button.classList.add('die2');
     main_window.style.display = "flex";
     main_window.classList.add('entire_box');
