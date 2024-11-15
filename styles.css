@@ -66,39 +66,39 @@ html, body{
 .top_left_corner{
     position:absolute;
     top: 0;
-    background: url("border/toleco.png");
+    background: url("/emporium/border/toleco.png");
 }
 .top_horizontal_border{
-    background: url("border/tohobo.png");
+    background: url("/emporium/border/tohobo.png");
 }
 .top_right_corner{
     position:absolute;
     right:0;
-    background: url("border/torico.png");
+    background: url("/emporium/border/torico.png");
 }
 .left_vertical_border{
-    background: url("border/vertical_left.png");
+    background: url("/emporium/border/vertical_left.png");
 }
 .right_vertical_border {
     position:absolute;
     right:0;
-    background: url("border/vertical_right.png");
+    background: url("/emporium/border/vertical_right.png");
 }
 .bottom_left_corner{
-    background: url("border/boleco.png");
+    background: url("/emporium/border/boleco.png");
     position:absolute;
     bottom:0;
 }
 .bottom_horizontal_border{
     position:absolute;
     bottom:0px;
-    background: url("border/bohobo.png")
+    background: url("/emporium/border/bohobo.png")
 }
 .bottom_right_corner{
     position:absolute;
     bottom:0px;
     right:0px;
-    background: url("border/borico.png")
+    background: url("/emporium/border/borico.png")
 }
 #powerbutton{
     display:flex;
