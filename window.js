@@ -10,12 +10,53 @@ const notepadheader = document.getElementById('notepadheader');
 const notif_MINI = document.getElementById(`MINInotif`);
 const notif_MINI_ntpd = document.getElementById(`MINInotif_ntpd`);
 var opening = new Audio('audio/opening.mp3');
+const powerBTN = document.getElementById('powerBTN');
 
 console.log("Script loaded");
 function exit_screen() {
     window.open("index.html", "_self");
 };
+powerBTN.addEventListener("click", function() {
+    console.log("Power button clicked!");
+    start_button.classList.add('die');
+    text_under_button.classList.add('die2');
+    main_window.style.display = "flex";
+    main_window.classList.add('entire_box');
 
+    const bootingMessages = ["booting(! . .)", "booting(* . .)", "booting(* ! .)", "booting(* * .)", "booting(* * !)"];
+    let delay = 1000;
+
+    bootingMessages.forEach((message) => {
+        setTimeout(() => {
+            document.getElementById('booting').textContent = message;
+        }, delay);
+        delay += 1500;
+    });
+    setTimeout(() => {
+        setTimeout(() => {
+                setTimeout(() => {
+                    opening.play();
+                    setTimeout(() => {
+                    document.getElementById('booting').textContent = "booting(* * *)";
+                    screen.classList.add('SCREENON');
+                    const textoverthingy = document.getElementsByClassName('text');
+                    for (let i = 0; i < textoverthingy.length; i++) {
+                        textoverthingy[i].classList.add('opacityno-full');
+                    }
+                    for (let i = 0; i < screen_icon.length; i++) {
+                        screen_icon[i].classList.add('opacityno-full');
+                    }
+                    document.getElementById('booting').classList.add('opno');
+                    document.getElementById('exit').style.display = "flex";
+                    document.getElementById('windowstuff').style.display = "flex";
+                    document.getElementById('under_webic').style.display = "flex";
+                    document.getElementById('under_notesic').style.display = "flex";
+                    document.getElementById(`powerbutton`).style.display = "none";
+                    }, 1000);
+                }, delay + 1000);
+        });
+    });
+});
 // drag window stuff below
 //webwindow
 function onDragwebwindow({movementX, movementY}){
