@@ -1,3 +1,10 @@
+here is the link [the highway](https://toast-mh-m.github.io/)
+please view this site in desktop and NOT mobile.
+not compatible at the moment :((
+so please listen.
+
+------------------------------------------------------------------------------------
+
 very beta build of this thing i made.
 lemme know for any bugs.
 
@@ -56,6 +63,4 @@ why i added so much differences to notepad window:
 
 anymore questions, remarks, and/or suggestions just ask me.
 peace
-
-oh yeah here is the link [the highway](https://toast-mh-m.github.io/)
 -/jm\
