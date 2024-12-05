@@ -12,12 +12,10 @@ const notif_MINI_ntpd = document.getElementById(`MINInotif_ntpd`);
 var opening = new Audio('audio/opening.mp3');
 const powerBTN = document.getElementById('powerBTN');
 
-console.log("Script loaded");
 function exit_screen() {
     window.open("index.html", "_self");
 };
 powerBTN.addEventListener("click", function() {
-    console.log("Power button clicked!");
     powerBTN.classList.add('die');
     text_under_button.classList.add('die2');
     main_window.style.display = "flex";
@@ -297,7 +295,6 @@ function save_ntpd(){
     let delay = 0;
 
     if (typeof(Storage) !== "undefined") {
-    if(localStorage.save_ntpd){
         savingmessages.forEach((message) => {
             setTimeout(() => {
                 document.getElementById('storagenotifs_ntpd').textContent = message;
@@ -306,7 +303,7 @@ function save_ntpd(){
         });
         setTimeout(() => {
             document.getElementById('storagenotifs_ntpd').textContent = "done";
-            localStorage.setItem('notepadtext', scrollContainer.innerHTML);
+            window.localStorage.setItem('notepadtext', scrollContainer.innerHTML);
             setTimeout(() => {
                 document.getElementById('storagenotifs_ntpd').textContent = "...";
             }, 5000)
@@ -314,11 +311,12 @@ function save_ntpd(){
     } else {
         document.getElementById('storagenotifs_ntpd').textContent = "ERROR";
         alert("CANNOT SAVE ON NOTEPAD; PLEASE CONTACT THE OWNER OF THIS MACHINE FOR MORE INFO.");
-    }
 }}
 function loadnotepadtext(){
-    const savedtextforntpd = localStorage.getItem('notepadtext');
-    if (savedtextforntpd) scrollContainer.innerHTML = savedtextforntpd;
+    var savedtextforntpd = window.localStorage.getItem('notepadtext');
+    if(savedtextforntpd){
+        scrollContainer.innerHTML = savedtextforntpd;
+    }
 }
 function restart_ntpd(){
     const deletingmessages = ["deleting", "deleting.", "deleting..", "deleting..."];
@@ -332,7 +330,7 @@ function restart_ntpd(){
     setTimeout(() => {
         document.getElementById('storagenotifs_ntpd').textContent = "done";
         scrollContainer.innerHTML = "";
-        localStorage.removeItem("notepadtext");
+        window.localStorage.removeItem("notepadtext");
         setTimeout(() => {
             document.getElementById('storagenotifs_ntpd').textContent = "...";
         }, 5000)
