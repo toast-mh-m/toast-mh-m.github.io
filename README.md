@@ -2,6 +2,9 @@ here is the link [the highway](https://toast-mh-m.github.io/)
 please view this site in desktop and NOT mobile.
 not compatible at the moment :((
 so please listen.
+i recommend clicking the link NOW and once you are done THEN reading the rest of this cuz its just bug notes & all that.
+just don't want spoilers, yknow?
+but do what you want i can't stop you.
 
 ------------------------------------------------------------------------------------
 
