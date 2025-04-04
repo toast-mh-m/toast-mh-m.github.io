@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>the highway</title>
+    <title>...</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/icon.png" type="gif" sizes="16x16">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,29 +11,46 @@
 
 </head>
 <body>
+    <div id="smallscreenH">an error has occured. to continue: <br><br> please expand the viewport of this site! <br><br> if you are on mobile, please come back when this site supports you! <br><br> error: <br>69 6E 63 72 65 61 73 65 20 68 65 69 67 68 74 20 6F 66 20 74 68 69 73 20 77 69 6E 64 6F 77 20 74 6F 20 63 6F 6E 74 69 6E 75 65 21</div>
+    <div id="smallscreenW">an error has occured. to continue: <br><br> please expand the viewport of this site! <br><br> if you are on mobile, please come back when this site supports you! <br><br> error: <br>69 6E 63 72 65 61 73 65 20 77 69 64 74 68 20 6F 66 20 74 68 69 73 20 77 69 6E 64 6F 77 20 74 6F 20 63 6F 6E 74 69 6E 75 65 21</div>
+    <div id="smallscreenHW">an extreme error has occured!! to continue: <br><br> please expand the viewport! important! <br><br> if you are on mobile, please come back when this site supports you!<br><br> major error: 65 78 70 61 6E 64 20 74 68 65 20 77 69 6E 64 6F 77 20 6F 66 20 74 68 69 73 20 74 6F 20 63 6F 6E 74 69 6E 75 65 21 20 61 6E 79 74 68 69 6E 67 21 20 70 6C 65 61 73 65 21 20 31 34 33</div>
     <div id="entire_box">
         <div class="base" id="base"></div>
         <!-- on screen stuff -->
+        <div class="crt">
+        <div id="fnue1">please wait while your computer shuts down.</div>
         <div class="screen" id="screen">
             <div class="text" id="windowstuff">INFORMATION HIGHWAY</div>
             <div class="text" id="exit" onclick="exit_screen()" style="text-align:right; width:min-content">EXIT</div>
+            <!-- <div id="menu_bar">
+                
+            </div> -->
+            <div id="blackscrn"></div>
             <div class="bootingtext" id="booting">booting(. . .)</div>
             <!-- ADD AUDIO!!!!!!!!!!!! -->
+            
+
             <!-- web icons & text -->
             <div id="under_webic" onclick="webwindow()">
-                <!-- web icon & all that -->
-                <div class="web_img"><img draggable="false" src="images/earthween.png"></div>
+                <div class="web_img"><img draggable="false" src="images/juanmade/thehighway.png"></div>
                 <div><img id="MINInotif" draggable="false" src="images/YO!.png"></div>
-                <div class="text icon_text">web</div>
+                <div class="text icon_text">highway</div>
             </div>
-            <!-- credits & all that -->
+            <!-- notes & all that -->
             <div id="under_notesic" onclick="noteswindow()">
                 <div class="web_img"><img draggable="false" src="images/credits.png"></div>
                 <div><img id="MINInotif_ntpd" draggable="false" src="images/YO!.png"></div>
                 <div class="text icon_text">notes</div>
             </div>
+
+
+            <div id="menu_bar"></div>
+            <div id="under_settingsic">
+                <div class="settings"><img draggable="false" src="images/setting.png"></div>
+            </div>
+
             <!-- web window -->
-            <div class="window1">
+            <!-- <div class="window1">
                 <header id="windowoneheader">
                     <div style="display: flex; margin: 10px; font-style: italic; font-weight:bold; font-size: 30px; font-family: Rochester; color: white;">hyper-highway</div>
                     <div class="actions" onmousedown="event.stopImmediatePropagation(); event.stopPropagation(); event.preventDefault()">
@@ -43,8 +60,22 @@
                     </div>
                 </header>
                 <div class="content" style="padding: 10px; font-size:x-large"> your internet may be out, please check your router! (not out yet, full release will have the web)</div>
-            </div>
+            </div> -->
             <!-- web window -->
+
+
+            <div class="testwindow">
+                <img src="images/juanmade/the_highway.png" draggable="false">
+                <header id="testwindowoneheader">
+                    <div class="testicons" onmousedown="event.stopImmediatePropagation(); event.stopPropagation(); event.preventDefault()">
+                        <div class="testminimize" title="minimize" onclick="toggleMINIMIZEweb()"><img src="images/juanmade/exitwindowicon.png"></div>
+                        <div class="testfullscreen" title="resize" onclick="toggleRESIZEweb()"><img src="images/juanmade/fullscreenicon.png"></div>
+                        <div class="testexit" title="discard window" onclick="toggleDISCARDweb()"><img src="images/juanmade/exiticon.png"></div>
+                    </div>
+                </header>
+            </div>
+
+
             <!-- notes window -->
             <div class="notepadwindow">
                 <header id="notepadheader"><span style="display: flex; margin: 10px; font-style: italic; font-weight:bold;">notepad</span>
@@ -68,10 +99,11 @@
                 </div>
                 <div contenteditable="true" id="notepadwriting"></div>
                 <div id="storagenotifs_ntpd">...</div>
-                <div id="scrollingnotifs_ntpd"><div style="height: 35px; width: 35px; background: black"></div><div id="scrollarrow">↓</div>
+                <div id="scrollingnotifs_ntpd"><div style="height: 35px; width: 35px; background: black"></div><div id="scrollarrow">↕</div>
             </div>
             </div>
             <!-- notes window -->
+        </div>
         </div>
         <!-- screen border -->
         <div class="left_vertical_border verti_border"></div>
@@ -84,12 +116,12 @@
         <div class="bottom_right_corner corner"></div>
         </div>
     </div>
-    <!-- power button start -->
-    <div class="falling_start" id="powerbutton" style="height: 90vh;">
-        <button id="powerBTN" style="height:100px; width:100px;"><img src="images/power-button.png" id="pbimg"></button>
-        <div id="goaway" style="color:antiquewhite; font-size: small;">press to start</div>
-    </div>
-    
+    <label id="switch">
+        <input type="checkbox" id="startBTN">
+        <span class="slider"></span>
+        <label id="pbtxt">  off  |  on</label>
+    </label>
+    <button id="skippingbutton" onclick="skip_beginning()">debug skip booting anim</button>
 <script src="window.js" defer></script>
 </body>
 </html>
