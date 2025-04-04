@@ -1,5 +1,5 @@
 UPDATE 1: overhaul pretty much, refining the site to fit the asthetic more.
-here is the NEW link [the highway](https://toast-mh-m.github.io/)
+here is the NEW link [the highway]()
 
 !!! please view this in desktop mode, the site does not work on miniature devices sorry!!!
 
