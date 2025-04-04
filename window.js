@@ -1,60 +1,84 @@
 const start_button = document.getElementById('power_start');
-const text_under_button = document.getElementById('goaway');
+const text_under_button = document.getElementById('pbtxt');
 const main_window = document.getElementById('entire_box');
-const wrapper = document.querySelector(`.window1`);
+const wrapper = document.querySelector(`.testwindow`);
 const ntpd_window = document.querySelector(`.notepadwindow`);
 const screen = document.getElementById(`screen`);
 const screen_icon = document.getElementsByClassName('web_img');
-const windowoneheader = document.getElementById('windowoneheader');
+const windowoneheader = document.getElementById('testwindowoneheader');
 const notepadheader = document.getElementById('notepadheader');
 const notif_MINI = document.getElementById(`MINInotif`);
 const notif_MINI_ntpd = document.getElementById(`MINInotif_ntpd`);
 var opening = new Audio('audio/opening.mp3');
-const powerBTN = document.getElementById('powerBTN');
+const startBTN = document.getElementById('switch');
+const infografic_ntpdd = document.getElementById('infografic_ntpd');
+const blackscrn = document.getElementById('blackscrn');
 
 function exit_screen() {
-    window.open("index.html", "_self");
+    document.querySelectorAll('.screen *').forEach(el => {
+        el.style.display = 'none';
+    });
+    document.getElementById('screen').classList.add('screenshutdown');
+    document.getElementById('fnue1').style.display = "flex";
+    document.getElementById('fnue1').classList.add('opacityno-full');
+    document.title = "shutting down...";
+    setTimeout(() => {
+        window.close();
+    }, 15000);
 };
-powerBTN.addEventListener("click", function() {
-    powerBTN.classList.add('die');
-    text_under_button.classList.add('die2');
+startBTN.addEventListener("click", function() {
+    startBTN.classList.add('die'); //animation
+    text_under_button.classList.add('die2'); //animation
     main_window.style.display = "flex";
-    main_window.classList.add('entire_box');
+    main_window.classList.add('entire_box'); //animation
 
-    const bootingMessages = ["booting(! . .)", "booting(* . .)", "booting(* ! .)", "booting(* * .)", "booting(* * !)"];
+    const bootingMessages = ["booting( ! . . )", "booting( * . . )", "booting( * ! . )", "booting( * * . )", "booting( * * ! )"];
     let delay = 1000;
 
-    bootingMessages.forEach((message) => {
+    bootingMessages.forEach((message) => { //technically animation
         setTimeout(() => {
             document.getElementById('booting').textContent = message;
+            document.title = message;
         }, delay);
-        delay += 1500;
+        delay += 2000;
     });
     setTimeout(() => {
         setTimeout(() => {
                 setTimeout(() => {
                     opening.play();
                     setTimeout(() => {
-                    document.getElementById('booting').textContent = "booting(* * *)";
+                    document.getElementById('booting').textContent = "booting( * * * )";
                     screen.classList.add('SCREENON');
-                    const textoverthingy = document.getElementsByClassName('text');
-                    for (let i = 0; i < textoverthingy.length; i++) {
-                        textoverthingy[i].classList.add('opacityno-full');
-                    }
-                    for (let i = 0; i < screen_icon.length; i++) {
-                        screen_icon[i].classList.add('opacityno-full');
-                    }
                     document.getElementById('booting').classList.add('opno');
+                    blackscrn.classList.add("opacityno-full");
                     document.getElementById('exit').style.display = "flex";
                     document.getElementById('windowstuff').style.display = "flex";
                     document.getElementById('under_webic').style.display = "flex";
                     document.getElementById('under_notesic').style.display = "flex";
-                    document.getElementById(`powerbutton`).style.display = "none";
+                    document.getElementById('under_settingsic').style.display = "flex";
+                    document.getElementById(`switch`).style.display = "none";
+                    document.title = "the highway";
                     }, 1000);
                 }, delay + 1000);
         });
     });
 });
+
+function skip_beginning(){
+    opening.play();
+    screen.classList.add('SCREENON');
+    main_window.style.display = "flex";
+    document.getElementById('skippingbutton').style.display = "none";
+    document.getElementById('booting').classList.add('opno');
+    blackscrn.classList.add("opacityno-full");
+    document.getElementById('exit').style.display = "flex";
+    document.getElementById('windowstuff').style.display = "flex";
+    document.getElementById('under_webic').style.display = "flex";
+    document.getElementById('under_notesic').style.display = "flex";
+    document.getElementById('under_settingsic').style.display = "flex";
+    document.getElementById(`switch`).style.display = "none";
+    document.title = "the highway";
+}
 // drag window stuff below
 //webwindow
 function onDragwebwindow({movementX, movementY}){
@@ -62,9 +86,10 @@ function onDragwebwindow({movementX, movementY}){
     let left = parseInt(wrapperSTYLE.left);
     let top = parseInt(wrapperSTYLE.top);
     if(!wrapper.classList.contains(`fullscreenNOW`)){
-    wrapper.style.top = `${top + movementY}px`;
-    wrapper.style.left = `${left + movementX}px`;}
-};
+        wrapper.style.top = `${top + movementY}px`;
+        wrapper.style.left = `${left + movementX}px`;
+    }};
+
 windowoneheader.addEventListener("mousedown", (event)=>{
     event.preventDefault();
     windowoneheader.classList.add(`active`);
@@ -73,9 +98,12 @@ windowoneheader.addEventListener("mousedown", (event)=>{
     document.addEventListener("mousemove", onDragwebwindow);
 });
 windowoneheader.addEventListener("mouseup", ()=>{
-    windowoneheader.classList.remove(`active`);
-    document.removeEventListener("mousemove", onDragwebwindow);
+    for (let i = 0; i < 5; i++) {
+        windowoneheader.classList.remove(`active`);
+        document.removeEventListener("mousemove", onDragwebwindow);
+    }
 });
+
 //notepadwindow
 function onDragntpd({movementX, movementY}){
     let notepadheaderSTYLE = window.getComputedStyle(ntpd_window);
@@ -97,7 +125,6 @@ document.addEventListener("mouseup", ()=>{
     document.removeEventListener("mousemove", onDragntpd);
 });
 
-
 //window for web icon thingys i dunno the name
 function webwindow(){
     if(wrapper.classList.contains(`hidden`)){
@@ -114,36 +141,7 @@ function webwindow(){
     ntpd_window.style.zIndex = "10";
     }
 };
-function toggleMINIMIZEweb(){
-    wrapper.style.display = "none";
-    wrapper.classList.add(`hidden`);
-    notif_MINI.style.display = "flex";
-    wrapper.style.zIndex = "10000";
-    ntpd_window.style.zIndex = "10";
-};
-function toggleRESIZEweb(){
-    let getStyle = window.getComputedStyle(wrapper);
-        let left = parseInt(getStyle.left);
-        let top = parseInt(getStyle.top);
-    if(wrapper.classList.contains(`fullscreenNOW`)){
-        wrapper.classList.remove(`fullscreenNOW`);
-        wrapper.style.top = '50%';
-        wrapper.style.left = '50%';
-    } else {
-        wrapper.classList.add(`fullscreenNOW`);
-        wrapper.style.top = '50%';
-        wrapper.style.left = '50%';
-        wrapper.style.zIndex = "10000";
-        ntpd_window.style.zIndex = "10";
-    }};
-function toggleDISCARDweb(){
-    wrapper.classList.add(`discardWINDOW`);
-    setTimeout(() => {
-        wrapper.classList.remove(`discardWINDOW`);
-        wrapper.style.display = "none";
-        wrapper.classList.remove(`fullscreenNOW`);
-    }, 1)
-};
+
 //window for notepad :))
 let isScrolling;
 let lastScrollTop = 0;
@@ -166,56 +164,65 @@ function noteswindow(){
     wrapper.style.zIndex = "10";
     }
 }
-function toggleMINIMIZE_ntpd(){
-    ntpd_window.style.display = "none";
-    ntpd_window.classList.add(`hidden`);
-    notif_MINI_ntpd.style.display = "flex";
-    ntpd_window.style.zIndex = "10000";
-    wrapper.style.zIndex = "10";
-};
-function toggleRESIZE_ntpd(){
-    let getnotepadStyle = window.getComputedStyle(ntpd_window);
-        let left = parseInt(getnotepadStyle.left);
-        let top = parseInt(getnotepadStyle.top);
-    let scrollnotif = document.getElementById(`scrollingnotifs_ntpd`);
-    if(ntpd_window.classList.contains(`fullscreenNOW`)){
-        ntpd_window.classList.remove(`fullscreenNOW`);
-        ntpd_window.style.top = '50%';
-        ntpd_window.style.left = '50%';
-        ntpd_window.style.height = "500px";
-        ntpd_window.style.width = "500px";
-        scrollnotif.classList.remove(`ntpdscrollnotifs_fullscreen`);
-        scrollnotif.style.borderBottom = "inherit";
-        scrollnotif.style.borderLeft = "0px solid black";
-        scrollnotif.style.right = "-49.97px";
-        scrollnotif.style.top = "103.2px";
-        scrollnotif.style.bottom = "0";
-    } else {
-        ntpd_window.classList.add(`fullscreenNOW`);
-        ntpd_window.style.top = '50%';
-        ntpd_window.style.left = '50%';
-        ntpd_window.style.height = "100%";
-        ntpd_window.style.width = "100%";
-        ntpd_window.style.zIndex = "10000";
-        wrapper.style.zIndex = "10";
+function manageWindow(windowElement, action){
+    switch(action){
+        case "minimize":
+            windowElement.style.display = "none";
+            windowElement.classList.add(`hidden`);
+            windowElement.style.zIndex = "10000";
+            break;
+        case "resize":
+            if(windowElement.classList.contains("fullscreenNOW")) {
+                windowElement.classList.remove("fullscreenNOW");
+                document.querySelector('.testicons').classList.remove('highwayheaders');
+                windowElement.style.top = "50%";
+                windowElement.style.left = "50%";
+            } else {
+                if(windowElement == wrapper){
+                    document.querySelector('.testicons').classList.add('highwayheaders');
+                }
+                windowElement.classList.add("fullscreenNOW");
+                windowElement.style.top = "50%";
+                windowElement.style.left = "50%";
+            }
+            break;
+        case "discard":
+            windowElement.classList.add("discardWINDOW");
+            setTimeout(() => {
+                windowElement.classList.remove(`discardWINDOW`);
+                windowElement.style.display = "none";
+                windowElement.classList.remove(`fullscreenNOW`);
+            }, 1);
+            break;
+    }
+}
+let scrollnotif = document.getElementById(`scrollingnotifs_ntpd`);
+
+function toggleMINIMIZEweb() { manageWindow(wrapper, "minimize");notif_MINI.style.display = "flex"; }
+function toggleRESIZEweb() { manageWindow(wrapper, "resize"); }
+function toggleDISCARDweb() { manageWindow(wrapper, "discard"); }
+
+function toggleMINIMIZE_ntpd() { manageWindow(ntpd_window, "minimize"); notif_MINI_ntpd.style.display = "flex"; }
+function toggleRESIZE_ntpd() {
+    manageWindow(ntpd_window, "resize");
+    if(ntpd_window.classList.contains("fullscreenNOW")){
         scrollnotif.classList.add(`ntpdscrollnotifs_fullscreen`);
-        scrollnotif.style.borderBottom = "0px solid black";
-        scrollnotif.style.borderLeft = "inherit";
-        scrollnotif.style.right = "25px";
-        scrollnotif.style.top = '93.3%';
-        scrollnotif.style.bottom = "10px";
+        scrollnotif.classList.remove(`scrollingnotifs_ntpd`);
+        infografic_ntpdd.classList.add('infografic_ntpd-fullscreen');
+        infografic_ntpdd.classList.add("infografic_ntpd_before-fullscreen");
+    } else{
+        scrollnotif.classList.remove(`ntpdscrollnotifs_fullscreen`);
+        scrollnotif.classList.add(`scrollingnotifs_ntpd`);
+        infografic_ntpdd.classList.remove('infografic_ntpd-fullscreen');
+        infografic_ntpdd.classList.remove("infografic_ntpd_before-fullscreen");
+    }
+}
+function toggleDISCARD_ntpd() {
+    manageWindow(ntpd_window, "discard");
+    loadnotepadtext();
+    info_ntpd();
 
-
-}};
-function toggleDISCARD_ntpd(){
-    ntpd_window.classList.add(`discardWINDOW`);
-    setTimeout(() => {
-        ntpd_window.classList.remove(`discardWINDOW`);
-        ntpd_window.style.display = "none";
-        ntpd_window.classList.remove(`fullscreenNOW`);
-        loadnotepadtext();
-    }, 1)
-};
+}
 
 scrollContainer.addEventListener("scroll", () => {
     clearTimeout(isScrolling);
@@ -239,112 +246,87 @@ scrollContainer.addEventListener("scroll", () => {
         document.getElementById(`scrollarrow`).style.fontSize = "xx-large";
     }, 200); // adjust time as needed (200ms is typical)
 });
-let isbold = false;
-function bold_ntpd(){
-    if (isbold){
-        document.execCommand("bold", false, null);
-        document.getElementById(`notepadwriting`).focus();
-    } else {
-        document.execCommand("bold", false, null);
-        document.getElementById(`notepadwriting`).focus();
-    }
-    isbold = !isbold;
-}
-let isitalic = false;
-function italic_ntpd(){
-    if (isitalic){
-        document.execCommand("italic", false, null);
-        document.getElementById(`notepadwriting`).focus();
-    } else {
-        document.execCommand("italic", false, null);
-        document.getElementById(`notepadwriting`).focus();
-    }
-}
-let isunderline = false;
-function underline_ntpd(){
-    if (isunderline){
-        document.execCommand(`underline`, false, null);
-        document.getElementById(`notepadwriting`).focus();
-    } else {
-        document.execCommand(`underline`, false, null);
-        document.getElementById(`notepadwriting`).focus();
-    }
-}
-let isorderedlist = false;
-function orderedlist_ntpd(){
-    if (isorderedlist){
-        document.execCommand(`insertOrderedList`, false, null);
-        document.getElementById(`notepadwriting`).focus();
-    } else {
-        document.execCommand(`insertOrderedList`, false, null);
-        document.getElementById(`notepadwriting`).focus();
-    }
-}
-let isUNorderedlist = false;
-function UNorderedlist_ntpd(){
-    if (isUNorderedlist){
-        document.execCommand(`insertUnorderedList`, false, null);
-        document.getElementById(`notepadwriting`).focus();
-    } else {
-        document.execCommand(`insertUnorderedList`, false, null);
-        document.getElementById(`notepadwriting`).focus();
-    }
-}
-function save_ntpd(){
-    const savingmessages = ["saving", "saving.", "saving..", "saving..."];
-    let delay = 0;
 
-    if (typeof(Storage) !== "undefined") {
-        savingmessages.forEach((message) => {
-            setTimeout(() => {
-                document.getElementById('storagenotifs_ntpd').textContent = message;
-            }, delay);
-            delay += 1250;
-        });
+
+function toggleTextFormat(command) {
+    document.execCommand(command, false, null);
+    document.getElementById("notepadwriting").focus();
+}
+function bold_ntpd() { toggleTextFormat("bold"); }
+function italic_ntpd() { toggleTextFormat("italic"); }
+function underline_ntpd() { toggleTextFormat("underline"); }
+function orderedlist_ntpd() { toggleTextFormat("insertOrderedList"); }
+function UNorderedlist_ntpd() { toggleTextFormat("insertUnorderedList"); }
+
+function showProgressMessages(elementId, messages, callback) {
+    let delay = 0;
+    messages.forEach((message) => {
         setTimeout(() => {
-            document.getElementById('storagenotifs_ntpd').textContent = "done";
-            window.localStorage.setItem('notepadtext', scrollContainer.innerHTML);
+            document.getElementById(elementId).textContent = message;
+        }, delay);
+        delay += 1250;
+    });
+    setTimeout(callback, delay);
+}
+function save_ntpd() {
+    if (typeof Storage !== "undefined") {
+        document.getElementById('ntpd_save').disabled = true;
+        document.getElementById('ntpd_save').classList.add("disabled_ntpd");
+        document.getElementById('ntpd_restart').disabled = true;
+        document.getElementById('ntpd_restart').classList.add("disabled_ntpd");
+        showProgressMessages("storagenotifs_ntpd", ["saving", "saving.", "saving..", "saving..."], () => {
+            document.getElementById("storagenotifs_ntpd").textContent = "done";
+            localStorage.setItem("notepadtext", scrollContainer.innerHTML);
             setTimeout(() => {
                 document.getElementById('storagenotifs_ntpd').textContent = "...";
+                document.getElementById('ntpd_save').disabled = false;
+                document.getElementById('ntpd_save').classList.remove("disabled_ntpd");
+                document.getElementById('ntpd_restart').disabled = false;
+                document.getElementById('ntpd_restart').classList.remove("disabled_ntpd");
             }, 5000)
-        }, delay += 1250)
+        });
     } else {
         document.getElementById('storagenotifs_ntpd').textContent = "ERROR";
         alert("CANNOT SAVE ON NOTEPAD; PLEASE CONTACT THE OWNER OF THIS MACHINE FOR MORE INFO.");
-}}
+    }
+}
+function restart_ntpd() {
+    document.getElementById('ntpd_save').disabled = true;
+    document.getElementById('ntpd_save').classList.add("disabled_ntpd");
+    document.getElementById('ntpd_restart').disabled = true;
+    document.getElementById('ntpd_restart').classList.add("disabled_ntpd");
+    showProgressMessages("storagenotifs_ntpd", ["deleting", "deleting.", "deleting..", "deleting..."], () => {
+        document.getElementById("storagenotifs_ntpd").textContent = "done";
+        scrollContainer.innerHTML = "";
+        localStorage.removeItem("notepadtext");
+        setTimeout(() => {
+            document.getElementById('storagenotifs_ntpd').textContent = "...";
+            document.getElementById('ntpd_save').disabled = false;
+            document.getElementById('ntpd_save').classList.remove("disabled_ntpd");
+            document.getElementById('ntpd_restart').disabled = false;
+            document.getElementById('ntpd_restart').classList.remove("disabled_ntpd");
+        }, 5000)
+    });
+}
+let isinfobubble_ntpd = false;
+function info_ntpd(){
+    let infobubble = infografic_ntpd;
+    if(isinfobubble_ntpd){
+        infobubble.style.display = "none";
+        isinfobubble_ntpd = false;
+    } else {
+        infobubble.style.display = "flex";
+        isinfobubble_ntpd = true;
+    }
+    if(ntpd_window.classList.contains("discardWINDOW")){
+        infobubble.style.display = "none";
+        isinfobubble_ntpd = false;
+    }
+}
 function loadnotepadtext(){
     var savedtextforntpd = window.localStorage.getItem('notepadtext');
     if(savedtextforntpd){
         scrollContainer.innerHTML = savedtextforntpd;
-    }
-}
-function restart_ntpd(){
-    const deletingmessages = ["deleting", "deleting.", "deleting..", "deleting..."];
-    let delay = 0;
-
-    deletingmessages.forEach((message) => {
-        setTimeout(() => {
-            document.getElementById('storagenotifs_ntpd').textContent = message;
-        }, delay += 1250);
-    });
-    setTimeout(() => {
-        document.getElementById('storagenotifs_ntpd').textContent = "done";
-        scrollContainer.innerHTML = "";
-        window.localStorage.removeItem("notepadtext");
-        setTimeout(() => {
-            document.getElementById('storagenotifs_ntpd').textContent = "...";
-        }, 5000)
-    }, delay += 1250)
-}
-let isinfobubble_ntpd = true;
-function info_ntpd(){
-    let infobubble = document.getElementById('infografic_ntpd');
-    if(isinfobubble_ntpd){
-        infobubble.style.display = "flex";
-        isinfobubble_ntpd = false;
-    } else {
-        infobubble.style.display = "none";
-        isinfobubble_ntpd = true;
     }
 }
 window.onload = loadnotepadtext;
